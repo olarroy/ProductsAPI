@@ -16,11 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="App\" />
-    <Folder Include="Domain\Model\" />
-    <Folder Include="Infra\Data\" />
-    <Folder Include="Infra\Repositories\" />
-    <Folder Include="Interfaces\Controllers\" />
+    <Folder Include="etc\MySQL\" />
   </ItemGroup>
 
 </Project>

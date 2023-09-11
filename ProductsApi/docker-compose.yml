@@ -1,0 +1,34 @@
+version: '3.8'
+
+services:
+  productApi:
+    image: mcr.microsoft.com/dotnet/aspnet:6.0
+    ports:
+      - "8080:80"
+    volumes:
+      - ./ProductsApi:/ProductsApi
+    depends_on:
+      - db
+    environment:
+      - ConnectionStrings__DefaultConnection=Server=db;Database=ProductsDB;User=root;Password=root;
+    networks:
+      - defaultNetwork
+
+  mysql:
+    image: mysql:latest
+    environment:
+      MYSQL_ROOT_PASSWORD: PASS
+      MYSQL_DATABASE: ProductsDB
+      MYSQL_USER: root
+      MYSQL_PASSWORD: root
+    volumes:
+      - mysql_data:/var/lib/mysql
+    networks:
+      - defaultNetwork
+
+networks:
+  defaultNetwork:
+    driver: bridge
+
+volumes:
+  mysql_data:
